@@ -1,0 +1,96 @@
+/* Global Style */
+body {
+  background-color: #111;
+  color: #fff;
+  font-family: Arial, sans-serif;
+}
+
+/* Tab Navigation */
+.nav-link {
+  font-size: 1.1rem;
+  border-radius: 0;
+  padding: 10px 15px;
+  transition: background-color 0.3s ease;
+}
+
+.nav-link:hover {
+  background-color: #333;
+}
+
+.nav-link.active {
+  background-color: #444 !important;
+}
+
+/* Control Button Styles */
+.card-body .btn {
+  font-size: 1.2rem;
+  padding: 15px;
+  border-radius: 10px;
+  font-weight: bold;
+}
+
+.card-body .btn:active {
+  transform: scale(0.98);
+}
+
+.card-body .btn-success {
+  background-color: #28a745;
+  border: 1px solid #28a745;
+}
+
+.card-body .btn-info {
+  background-color: #17a2b8;
+  border: 1px solid #17a2b8;
+}
+
+.card-body .btn-warning {
+  background-color: #ffc107;
+  border: 1px solid #ffc107;
+}
+
+.card-body .btn-danger {
+  background-color: #dc3545;
+  border: 1px solid #dc3545;
+}
+
+/* Card Styles */
+.card {
+  border-radius: 15px;
+  margin-bottom: 20px;
+}
+
+.card-title {
+  font-weight: bold;
+  color: #ffdd57;
+}
+
+.card-body {
+  padding: 20px;
+  background-color: #1b1b1b;
+}
+
+.card.bg-dark {
+  background-color: #333 !important;
+}
+
+footer {
+  background-color: #222;
+  color: #ddd;
+  padding: 10px 0;
+  font-size: 0.9rem;
+}
+
+footer p {
+  margin-bottom: 0;
+}
+
+/* Mobile and Tablet Adjustments */
+@media (max-width: 768px) {
+  .nav-tabs {
+    flex-direction: column;
+  }
+
+  .btn-primary {
+    width: 100%;
+  }
+}

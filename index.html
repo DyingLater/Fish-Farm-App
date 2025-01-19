@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Untitled</title>
+  <link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fish Farm Control App</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="script.js"></script>
+</head>
+
+<body class="bg-black text-light">
+    <div class="container py-3">
+        <header class="text-center py-4">
+            <h1 class="fw-bold">Fish Farm Control</h1>
+            <p class="text-muted">Efficient. Intelligent. Sustainable.</p>
+        </header>
+
+        <ul class="nav nav-tabs justify-content-center mb-4 border-0" id="appTabs" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active text-uppercase text-light border-0 fw-bold px-4" id="dashboard-tab"
+                    data-bs-toggle="tab" data-bs-target="#dashboard" type="button" role="tab">Dashboard</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link text-uppercase text-light border-0 fw-bold px-4" id="community-tab"
+                    data-bs-toggle="tab" data-bs-target="#community" type="button" role="tab">Community</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link text-uppercase text-light border-0 fw-bold px-4" id="ai-tips-tab"
+                    data-bs-toggle="tab" data-bs-target="#ai-tips" type="button" role="tab">AI Tips</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link text-uppercase text-light border-0 fw-bold px-4" id="alerts-tab"
+                    data-bs-toggle="tab" data-bs-target="#alerts" type="button" role="tab">Alerts</button>
+            </li>
+        </ul>
+
+        <div class="tab-content">
+            <div class="tab-pane fade show active" id="dashboard" role="tabpanel">
+                <div class="text-center my-4">
+                    <h2>Farm Statistics</h2>
+                    <p class="text-muted">Monitor the vital data in real-time</p>
+                </div>
+                <div class="row">
+                    <div class="col-md-3" data-bs-toggle="modal" data-bs-target="#chartModal" onclick="loadChartData('temperature')">
+                        <div class="card bg-dark text-white text-center border-0 mb-3 shadow-sm">
+                            <div class="card-body">
+                                <h5 class="card-title">Temperature</h5>
+                                <p class="card-text display-5 fw-bold" id="tempValue" style="color: green;">25°C</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3" data-bs-toggle="modal" data-bs-target="#chartModal" onclick="loadChartData('ammonia')">
+                        <div class="card bg-dark text-white text-center border-0 mb-3 shadow-sm">
+                            <div class="card-body">
+                                <h5 class="card-title">Ammonia Level</h5>
+                                <p class="card-text display-5 fw-bold" id="ammoniaValue" style="color: red;">High</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3" data-bs-toggle="modal" data-bs-target="#chartModal" onclick="loadChartData('oxygen')">
+                        <div class="card bg-dark text-white text-center border-0 mb-3 shadow-sm">
+                            <div class="card-body">
+                                <h5 class="card-title">Oxygen Level</h5>
+                                <p class="card-text display-5 fw-bold" id="oxygenValue" style="color: green;">7.5 mg/L</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3" data-bs-toggle="modal" data-bs-target="#chartModal" onclick="loadChartData('ph')">
+                        <div class="card bg-dark text-white text-center border-0 mb-3 shadow-sm">
+                            <div class="card-body">
+                                <h5 class="card-title">pH Level</h5>
+                                <p class="card-text display-5 fw-bold" id="phValue" style="color: yellow;">7.2</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-pane fade" id="alerts" role="tabpanel">
+                <div class="text-center my-4">
+                    <h2>Alerts</h2>
+                    <p class="text-muted">Stay informed with real-time alerts</p>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card bg-dark text-light mb-3">
+                            <div class="card-body">
+                                <h5 class="card-title">ALERT: High Ammonia Level Detected</h5>
+                                <p class="card-text">The ammonia level is dangerously high in the tank. Immediate action is needed to avoid harm to the fish.</p>
+                                <p style="color: green;">System Response: Activating water pump and filtration system to reduce ammonia levels.</p>
+                            </div>
+                        </div>
+                        <div class="card bg-dark text-light mb-3">
+                            <div class="card-body">
+                                <h5 class="card-title">ALERT: Low Oxygen Levels</h5>
+                                <p class="card-text">Oxygen levels are critically low. Fish are at risk of suffocation if action is not taken.</p>
+                                <p style="color: green;">System Response: Activating oxygen pumps to increase oxygen levels.</p>
+                            </div>
+                        </div>
+                        <div class="card bg-dark text-light mb-3">
+                            <div class="card-body">
+                                <h5 class="card-title">ALERT: Fish Feeding Scheduled</h5>
+                                <p class="card-text">The system has triggered the feeding schedule. Fish are being fed now.</p>
+                                <p style="color: green;">System Response: Activating fish feeder system to provide food.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-pane fade" id="community" role="tabpanel">
+                <div class="text-center my-4">
+                    <h2>Community Support</h2>
+                    <p class="text-muted">Connect with fellow farmers</p>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card bg-dark text-light mb-3">
+                            <div class="card-body">
+                                <h5 class="card-title">Q: What do I do if my water temperature gets too high?</h5>
+                                <p class="card-text"><strong>A:</strong> It's crucial to regulate water temperature for fish health. Consider adjusting your cooling system or checking for external factors.</p>
+                                <p><em>Suggested Action: Check for possible issues like high sunlight exposure or faulty cooling systems that could raise water temperature.</em></p>
+                            </div>
+                        </div>
+                        <div class="card bg-dark text-light mb-3">
+                            <div class="card-body">
+                                <h5 class="card-title">Q: How can I increase my fish growth rate?</h5>
+                                <p class="card-text"><strong>A:</strong> Ensure that oxygen levels are consistent and feed your fish according to the recommended schedule. Proper water quality plays a huge part in growth.</p>
+                                <p><em>Suggested Action: Adjust oxygenation techniques or increase feeding rates if growth is slower than expected.</em></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-pane fade" id="ai-tips" role="tabpanel">
+                <div class="text-center my-4">
+                    <h2>AI Tips & Predictions</h2>
+                    <p class="text-muted">Guided insights to boost farm productivity</p>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card bg-dark text-light mb-3">
+                            <div class="card-body">
+                                <h5 class="card-title">AI Tip: Optimal Water Conditions</h5>
+                                <p class="card-text">Ensure a stable water pH and oxygen level. Maintain pH between 6.5-8.5 and oxygen levels above 5 mg/L for optimal growth.</p>
+                            </div>
+                        </div>
+                        <div class="card bg-dark text-light mb-3">
+                            <div class="card-body">
+                                <h5 class="card-title">AI Prediction: Fish Growth Forecast</h5>
+                                <p class="card-text">Based on current data, your fish are projected to grow by 5% in the next month. Maintain current feeding schedules and oxygen levels for best results.</p>
+                            </div>
+                        </div>
+                        <div class="card bg-dark text-light mb-3">
+                            <div class="card-body">
+                                <h5 class="card-title">AI Market Forecast: Future Trends</h5>
+                                <p class="card-text">The demand for high-protein fish species, such as tilapia and trout, is expected to increase. Keeping track of the latest consumer trends is crucial to maximize profits.</p>
+                            </div>
+                        </div>
+                        <div class="card bg-dark text-light mb-3">
+                            <div class="card-body">
+                                <h5 class="card-title">AI Tip: Valuable Fish Species</h5>
+                                <p class="card-text">Aquaculture will see a rise in the demand for shrimp, barramundi, and sturgeon in coming years. Adapting your farm to accommodate these species may provide greater profitability.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="modal fade" id="chartModal" tabindex="-1" aria-labelledby="chartModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content bg-dark">
+                <div class="modal-header">
+                    <h5 class="modal-title text-light" id="chartModalLabel">Real-Time Data Chart</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <canvas id="dataChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function loadChartData(dataType) {
+            var ctx = document.getElementById('dataChart').getContext('2d');
+            var chartData = {
+                temperature: [22, 23, 24, 25, 26],
+                ammonia: [0.1, 0.2, 0.3, 0.4, 0.5],
+                oxygen: [6, 7, 8, 7.5, 7],
+                ph: [7.1, 7.2, 7.3, 7.4, 7.5]
+            };
+
+            var dataValues = chartData[dataType];
+
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ['01:00', '02:00', '03:00', '04:00', '05:00'],
+                    datasets: [{
+                        label: dataType.charAt(0).toUpperCase() + dataType.slice(1),
+                        data: dataValues,
+                        borderColor: 'rgb(75, 192, 192)',
+                        tension: 0.1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                        },
+                        tooltip: {
+                            callbacks: {
+                                title: function(tooltipItem) {
+                                    return `Reading at ${tooltipItem[0].label}`;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>
+<!-- partial -->
+  <script  src="./script.js"></script>
+
+</body>
+</html>
